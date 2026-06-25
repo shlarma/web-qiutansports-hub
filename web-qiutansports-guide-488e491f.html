@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>球探体育 - 从热爱到探索 | 信息卡片式介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #fbe4d0 0%, #f8d5b0 45%, #f3c090 100%);
+      padding: 2rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .page-wrapper {
+      max-width: 820px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* 主视觉区 — 暖白大卡片 */
+    .hero-card {
+      background-color: #fffcf7;
+      border-radius: 38px;
+      padding: 2.5rem 2rem 2.2rem;
+      box-shadow: 0 18px 40px -8px rgba(180, 110, 50, 0.25);
+      margin-bottom: 2rem;
+      transition: all 0.2s ease;
+    }
+
+    .hero-card h1 {
+      font-size: 2.4rem;
+      font-weight: 620;
+      letter-spacing: -0.02em;
+      color: #4d2e1a;
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-card h1 span {
+      background: linear-gradient(135deg, #b45f2a, #d17a3e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-tagline {
+      font-size: 1.1rem;
+      color: #6b4c31;
+      max-width: 580px;
+      line-height: 1.6;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-highlight {
+      display: inline-block;
+      background: #f1dccb;
+      padding: 0.2rem 0.9rem;
+      border-radius: 60px;
+      color: #4a2e1b;
+      font-weight: 480;
+      font-size: 0.95rem;
+      margin-top: 0.3rem;
+    }
+
+    /* 卡片网格 — 信息卡片 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.6rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 580px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .info-card {
+      background: #fffcf7;
+      border-radius: 30px;
+      padding: 1.8rem 1.6rem 1.6rem;
+      box-shadow: 0 12px 28px -6px rgba(140, 80, 35, 0.15);
+      transition: transform 0.2s, box-shadow 0.25s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 36px -10px rgba(130, 72, 28, 0.2);
+    }
+
+    .info-card .card-icon {
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .info-card h3 {
+      font-size: 1.45rem;
+      font-weight: 570;
+      color: #3f281a;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .info-card p {
+      color: #4f3826;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-bottom: 0.4rem;
+    }
+
+    .info-card .card-tag {
+      display: inline-block;
+      background: #edd9c6;
+      color: #3d2a1b;
+      border-radius: 40px;
+      padding: 0.25rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-top: 0.3rem;
+    }
+
+    /* 用途 + 适合人群混合卡片 */
+    .wide-card {
+      background: #fffcf7;
+      border-radius: 30px;
+      padding: 1.8rem 2rem 2rem;
+      box-shadow: 0 12px 28px -6px rgba(140, 80, 35, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .wide-card h2 {
+      font-size: 1.6rem;
+      font-weight: 590;
+      color: #3f281a;
+      margin-bottom: 0.9rem;
+      border-left: 5px solid #d17a3e;
+      padding-left: 1rem;
+    }
+
+    .two-column-people {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .people-group {
+      flex: 1 1 180px;
+    }
+
+    .people-group h4 {
+      font-weight: 590;
+      color: #5b3b24;
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .people-group ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .people-group li {
+      font-size: 0.95rem;
+      color: #4d3421;
+      padding: 0.2rem 0;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .people-group li::before {
+      content: "•";
+      color: #c47942;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    /* 自然链接段落 — 嵌入句子 */
+    .link-paragraph {
+      background: #fffcf7;
+      border-radius: 30px;
+      padding: 1.4rem 2rem 1.6rem;
+      box-shadow: 0 8px 20px -4px rgba(150, 80, 30, 0.1);
+      margin-bottom: 2rem;
+      font-size: 1.02rem;
+      line-height: 1.7;
+      color: #3d2b1c;
+    }
+
+    .link-paragraph a {
+      color: #b45a24;
+      background: #f2e2d3;
+      text-decoration: none;
+      font-weight: 530;
+      padding: 0.1rem 0.85rem 0.15rem 0.85rem;
+      border-radius: 60px;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+
+    .link-paragraph a:hover {
+      background: #d68f5a;
+      color: #2f1d0f;
+    }
+
+    .link-paragraph .quiet-hint {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.92rem;
+      color: #7b5d41;
+      background: #f0ded0;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+    }
+
+    /* FAQ 摘要 */
+    .faq-mini {
+      background: #fffcf7;
+      border-radius: 30px;
+      padding: 1.5rem 2rem 1.8rem;
+      box-shadow: 0 8px 20px -4px rgba(140, 78, 30, 0.08);
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-mini h3 {
+      font-size: 1.3rem;
+      font-weight: 570;
+      color: #3f281a;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item {
+      padding: 0.4rem 0 0.6rem;
+      border-bottom: 1px solid #f0ddd0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 540;
+      color: #4d2f1b;
+      font-size: 1rem;
+    }
+
+    .faq-a {
+      color: #5e3f29;
+      font-size: 0.95rem;
+      padding-top: 0.15rem;
+      line-height: 1.5;
+    }
+
+    /* 底部 */
+    .footer-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #4e3826;
+      opacity: 0.7;
+      margin-top: 0.6rem;
+      background: #f6e5d8;
+      padding: 0.5rem 1.2rem;
+      border-radius: 100px;
+      display: inline-block;
+      align-self: center;
+      backdrop-filter: blur(2px);
+    }
+
+    .flex-center {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* 按钮感链接 微样式 */
+    .btn-link {
+      display: inline-block;
+      background: #f1d6c2;
+      padding: 0.2rem 1.2rem;
+      border-radius: 80px;
+      color: #3f281a;
+      font-weight: 480;
+      font-size: 0.9rem;
+      transition: 0.15s;
+    }
+
+    .btn-link:hover {
+      background: #dbaa7a;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- 主视觉 hero -->
+  <div class="hero-card">
+    <h1>更贴近 <span>球探</span> 的视角</h1>
+    <p class="hero-tagline">
+      体育的魅力，不止在场上的九十多分钟。从球员动向到战术细节，每一次观察都像一次小型探索。
+    </p>
+    <span class="hero-highlight">⚽ 基于真实数据 &nbsp;·&nbsp; 适合日常阅读</span>
+  </div>
+
+  <!-- 信息卡片网格：用途 / 特点 -->
+  <div class="card-grid">
+    <div class="info-card">
+      <div class="card-icon">📋</div>
+      <h3>赛事梳理</h3>
+      <p>比赛密度越来越高，你需要一个能帮你快速聚焦关键场次的信息方式。从联赛对阵到状态走势，保持对球场的熟悉感。</p>
+      <span class="card-tag">每日更新 · 简洁</span>
+    </div>
+    <div class="info-card">
+      <div class="card-icon">🧭</div>
+      <h3>趋势观察</h3>
+      <p>不只是比分，阵容轮换、客场表现、近期得失球习惯——把这些细节串联起来，常常能看到更有意思的线索。</p>
+      <span class="card-tag">侧重逻辑 · 数据辅助</span>
+    </div>
+  </div>
+
+  <!-- 用途 + 适合人群 合并宽卡片 -->
+  <div class="wide-card">
+    <h2>🧩 用途与人群</h2>
+    <p style="margin-bottom: 0.8rem; color: #4a3220;">无论你是哪种爱好者，都能在这里找到契合自己节奏的内容。</p>
+    <div class="two-column-people">
+      <div class="people-group">
+        <h4>⚡ 常被用到的场景</h4>
+        <ul>
+          <li>比赛日快速浏览当日看点</li>
+          <li>研究球队近期攻防习惯</li>
+          <li>对比不同联赛的风格差异</li>
+          <li>碎片时间补充体育谈资</li>
+        </ul>
+      </div>
+      <div class="people-group">
+        <h4>👥 适合这样的你</h4>
+        <ul>
+          <li>喜欢琢磨战术的球迷</li>
+          <li>玩体育类游戏的数据派</li>
+          <li>刚入门想系统了解足球</li>
+          <li>在找靠谱体育内容源的编辑</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top: 0.8rem; font-size: 0.9rem; background: #f4e2d3; border-radius: 60px; padding: 0.2rem 1.2rem; display: inline-block; color: #45301e;">不需要成为专家，保持好奇就好</div>
+  </div>
+
+  <!-- 自然链接段落（嵌入 a 标签） -->
+  <div class="link-paragraph">
+    <p>很多朋友最开始只是偶尔看看比分，后来慢慢对球队的轮换习惯、主客场差异产生兴趣。如果你也有类似的转变，<a href="https://web-qiutansports.com">球探体育</a>里关于赛事前瞻和赛后梳理的内容，也许刚好能对上你的节奏。信息不一定非得冷冰冰，它可以像朋友聊天时说的「诶，你看他们最近那个客场防线……」那样自然。</p>
+    <span class="quiet-hint">📌 每天花几分钟，不用刻意记住什么</span>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <h3>❓ 你可能想了解的</h3>
+    <div class="faq-item">
+      <div class="faq-q">内容偏向哪类赛事？</div>
+      <div class="faq-a">以欧洲主流联赛为主，同时涵盖亚洲、美洲部分重要比赛，尽量覆盖不同时区的球迷。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">更新频率如何？</div>
+      <div class="faq-a">基本每天都有内容，赛前和赛后是重点时段。周末比赛多，信息量也会相应增加。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">适合完全不懂足球的人吗？</div>
+      <div class="faq-a">当然。很多基础概念和背景会穿插在文章里，读着读着就熟悉了，没有硬核门槛。</div>
+    </div>
+  </div>
+
+  <div class="flex-center">
+    <div class="footer-note">
+      ⚽ 从观察开始 · 不止于数据
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
